@@ -17,8 +17,8 @@ public class ApiRoutes {
 
     //  User
     public  static  final  String USER_BASE = BASE_API + "/users";
-    public  static  final String REGISTER = USER_BASE+"/register";
-    public  static  final String LOGIN = USER_BASE+"/login";
+    public  static  final String REGISTER = "/regisetr";
+    public  static  final String LOGIN = "/login";
 
     // Cart Routes
     public static final String CART_BASE = BASE_API + "/cart";
