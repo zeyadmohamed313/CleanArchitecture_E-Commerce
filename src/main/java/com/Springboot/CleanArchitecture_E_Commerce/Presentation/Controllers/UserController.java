@@ -4,6 +4,7 @@ import com.Springboot.CleanArchitecture_E_Commerce.Application.Features.User.Com
 import com.Springboot.CleanArchitecture_E_Commerce.Application.Features.User.Query.Handler.LoginUserHandler;
 import com.Springboot.CleanArchitecture_E_Commerce.Application.Features.User.Query.Model.LoginRequest;
 import com.Springboot.CleanArchitecture_E_Commerce.Presentation.ResponseSchema.ApiResponse;
+import com.Springboot.CleanArchitecture_E_Commerce.Presentation.Router.ApiRoutes;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,13 +26,13 @@ public class UserController {
         this.loginUserHandler = loginUserHandler;
     }
 
-    @PostMapping("/register")
+    @PostMapping(ApiRoutes.REGISTER)
     public ResponseEntity<ApiResponse<String>> register(@Valid @RequestBody RegisterUserRequest command) {
         String response = registerUserHandler.handle(command);
         return ResponseEntity.ok(ApiResponse.success("User registered successfully", response));
     }
 
-    @PostMapping("/login")
+    @PostMapping(ApiRoutes.LOGIN)
     public ResponseEntity<ApiResponse<String>> login(@Valid @RequestBody LoginRequest command) {
        String token = loginUserHandler.handle(command).orElseThrow();
         return ResponseEntity.ok(ApiResponse.success("Login successful", token));

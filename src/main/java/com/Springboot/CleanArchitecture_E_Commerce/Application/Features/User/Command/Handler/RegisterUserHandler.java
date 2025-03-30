@@ -24,7 +24,7 @@ public class RegisterUserHandler {
         }
 
         User user = new User(
-                request.getUsername(),  // Now passing username correctly
+                request.getUsername(),
                 request.getEmail(),
                 passwordEncoder.encode(request.getPassword()),
                 Role.USER
